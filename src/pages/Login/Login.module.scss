@@ -1,0 +1,80 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    background-image: url("https://images.hdqwalls.com/wallpapers/4k-giraffe-l2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 460px;
+    height: 85vh;
+    border-radius: 10px;
+
+    background-color: var(--white);
+
+    .heading {
+        font-size: 2rem;
+        padding: 80px 24px 16px;
+    }
+
+    .desc {
+        font-weight: 500;
+        font-size: 1.4rem;
+        margin-bottom: 24px;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 400px;
+    }
+
+    .form-group {
+        width: 100%;
+        margin-top: 8px;
+
+        input {
+            width: 100%;
+            padding: 10px 6px;
+            border: 1px solid #eee;
+            outline: none;
+            border-radius: 6px;
+        }
+    }
+
+    .button {
+        border: none;
+        border-radius: 6px;
+        padding: 10px;
+        margin-top: 8px;
+        width: 100%;
+
+        font-weight: 600;
+        background-color: #fdc888;
+    }
+
+    .text {
+        margin-top: 20px;
+        font-size: 1.2rem;
+        font-weight: 500;
+
+        button {
+            border: none;
+            background-color: transparent;
+            font-weight: 600;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
