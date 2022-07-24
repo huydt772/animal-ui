@@ -1,5 +1,8 @@
 import { Link, useSearchParams } from "react-router-dom";
 import classNames from "classnames/bind";
+
+import config from "../../config";
+import Button from "../../components/Button/Button";
 import styles from "./Login.module.scss";
 
 const cx = classNames.bind(styles);
@@ -29,12 +32,15 @@ function Login() {
                     <div className={cx("form-group")}>
                         <input type="password" required placeholder={register ? "Create a password" : "Password"} />
                     </div>
-                    <button className={cx("button")}>{register ? "Sign up" : "Sign in"}</button>
+
+                    <Button primary className={cx("button")}>
+                        {register ? "Sign up" : "Sign in"}
+                    </Button>
                 </form>
 
                 <p className={cx("text")}>
                     {register ? "Already have an account? " : "Don't have an account? "}
-                    <Link to={register ? "/login" : "/login?register=true"}>
+                    <Link to={register ? config.routes.login : `${config.routes.login}?register=true`}>
                         <button>{register ? "Log in" : "Sign up for free"}</button>
                     </Link>
                 </p>
