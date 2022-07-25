@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { MainLayout } from "./layouts";
+import config from "./config";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 
@@ -9,14 +10,14 @@ function App() {
             <div className="App">
                 <Routes>
                     <Route
-                        path="/"
+                        path={config.routes.animals}
                         element={
                             <MainLayout>
                                 <Home />
                             </MainLayout>
                         }
                     />
-                    <Route path="/login" element={<Login />} />
+                    <Route path={config.routes.login} element={<Login />} />
                 </Routes>
             </div>
         </Router>
