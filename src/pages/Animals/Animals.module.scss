@@ -1,28 +1,25 @@
-.loading {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 2px;
-    z-index: 999;
-    background-color: #eee;
+.wrapper {
+    position: relative;
+}
 
-    &::after {
-        content: "";
-        display: block;
-        width: 100%;
-        height: 2px;
-        background-color: #ff0000;
-        animation: slideRight linear 1s infinite;
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 20px;
+
+    .loading-icon {
+        font-size: 3rem;
+        animation: spinner 0.8s linear infinite;
     }
 }
 
-@keyframes slideRight {
+@keyframes spinner {
     from {
-        transform: translateX(-100%);
+        transform: rotate(0);
     }
     to {
-        transform: translateX(0);
+        transform: rotate(360deg);
     }
 }
 

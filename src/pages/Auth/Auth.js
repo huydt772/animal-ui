@@ -10,11 +10,11 @@ import Button from "../../components/Button/Button";
 import Image from "../../components/Image";
 import config from "../../config";
 import { auth } from "../../firebase-config";
-import styles from "./Login.module.scss";
+import styles from "./Auth.module.scss";
 
 const cx = classNames.bind(styles);
 
-function Login() {
+function Auth() {
     // eslint-disable-next-line no-unused-vars
     const [params, setParams] = useSearchParams();
     const userRegister = params.get("register");
@@ -29,9 +29,8 @@ function Login() {
     const navigate = useNavigate();
 
     const register = async (e) => {
+        e.preventDefault();
         try {
-            e.preventDefault();
-
             setLoading(true);
             await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
             await updateProfile(auth.currentUser, { displayName: registerName });
@@ -39,20 +38,21 @@ function Login() {
 
             navigate(config.routes.animals);
         } catch (error) {
+            setLoading(false);
             alert(error.message);
         }
     };
 
     const login = async (e) => {
+        e.preventDefault();
         try {
-            e.preventDefault();
-
             setLoading(true);
             await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
             setLoading(false);
 
             navigate(config.routes.animals);
         } catch (error) {
+            setLoading(false);
             alert(error.message);
         }
     };
@@ -81,7 +81,6 @@ function Login() {
                             <input
                                 value={registerName}
                                 type="text"
-                                required
                                 placeholder="Enter your name"
                                 onChange={(e) => setRegisterName(e.target.value)}
                             />
@@ -90,7 +89,6 @@ function Login() {
                             <input
                                 value={registerEmail}
                                 type="email"
-                                required
                                 placeholder="Enter your email"
                                 onChange={(e) => setRegisterEmail(e.target.value)}
                             />
@@ -99,7 +97,6 @@ function Login() {
                             <input
                                 value={registerPassword}
                                 type="password"
-                                required
                                 placeholder="Create a password"
                                 onChange={(e) => setRegisterPassword(e.target.value)}
                             />
@@ -115,7 +112,6 @@ function Login() {
                             <input
                                 value={loginEmail}
                                 type="email"
-                                required
                                 placeholder="Enter your email"
                                 onChange={(e) => setLoginEmail(e.target.value)}
                             />
@@ -124,7 +120,6 @@ function Login() {
                             <input
                                 value={loginPassword}
                                 type="password"
-                                required
                                 placeholder="Password"
                                 onChange={(e) => setLoginPassword(e.target.value)}
                             />
@@ -138,7 +133,7 @@ function Login() {
 
                 <p className={cx("text")}>
                     {userRegister ? "Already have an account? " : "Don't have an account? "}
-                    <Link to={userRegister ? config.routes.login : `${config.routes.login}?register=true`}>
+                    <Link to={userRegister ? config.routes.auth : `${config.routes.auth}?register=true`}>
                         <button>{userRegister ? "Log in" : "Sign up for free"}</button>
                     </Link>
                 </p>
@@ -147,4 +142,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Auth;

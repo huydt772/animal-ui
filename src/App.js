@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { MainLayout } from "./layouts";
 import config from "./config";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Animals from "./pages/Animals";
+import Auth from "./pages/Auth";
 
 function App() {
     return (
@@ -13,11 +13,11 @@ function App() {
                         path={config.routes.animals}
                         element={
                             <MainLayout>
-                                <Home />
+                                <Animals />
                             </MainLayout>
                         }
                     />
-                    <Route path={config.routes.login} element={<Login />} />
+                    <Route path={config.routes.auth} element={<Auth />} />
                 </Routes>
             </div>
         </Router>

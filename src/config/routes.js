@@ -1,5 +1,5 @@
 const routes = {
-    login: "/",
+    auth: "/",
     animals: "/animals",
 };
 
